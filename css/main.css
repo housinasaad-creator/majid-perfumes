@@ -8,11 +8,11 @@
   --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', system-ui, sans-serif; --disp: 'Cinzel', serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
-html[lang=ar] { --serif: 'Markazi Text', 'Cormorant Garamond', serif; --sans: 'Cairo', 'Jost', system-ui, sans-serif; --disp: 'Markazi Text', 'Cinzel', serif; }
+html[lang=ar] { --serif: 'El Messiri', 'Cormorant Garamond', serif; --sans: 'Tajawal', 'Jost', system-ui, sans-serif; --disp: 'El Messiri', 'Cinzel', serif; }
 html[lang=ar] body { font-weight: 500; }
 html[lang=ar] h1, html[lang=ar] h2, html[lang=ar] h3, html[lang=ar] .c-name, html[lang=ar] .li .nm, html[lang=ar] .sc-name, html[lang=ar] .tag, html[lang=ar] .m-shop, html[lang=ar] .m-nav a, html[lang=ar] .acc summary, html[lang=ar] .lg h2 { font-weight: 700; }
-html[lang=ar] h1 { font-size: clamp(48px, 7.4vw, 104px); line-height: 1.12; } html[lang=ar] h2 { font-size: clamp(38px, 5.4vw, 70px); line-height: 1.15; } html[lang=ar] h3 { font-size: clamp(26px, 2.6vw, 34px); }
-html[lang=ar] .c-name { font-size: clamp(30px, 2.8vw, 38px); } html[lang=ar] .c-notes, html[lang=ar] .nl, html[lang=ar] .nt-r em { font-style: normal; font-weight: 600; font-size: 17px; }
+html[lang=ar] h1 { font-size: clamp(42px, 6.4vw, 90px); line-height: 1.22; } html[lang=ar] h2 { font-size: clamp(34px, 4.8vw, 62px); line-height: 1.25; } html[lang=ar] h3 { font-size: clamp(24px, 2.3vw, 31px); line-height: 1.3; }
+html[lang=ar] .c-name { font-size: clamp(26px, 2.4vw, 32px); line-height: 1.25; } html[lang=ar] .c-notes, html[lang=ar] .nl, html[lang=ar] .nt-r em { font-style: normal; font-weight: 600; font-size: 17px; }
 html[lang=ar] .price, html[lang=ar] .c-price, html[lang=ar] .pr, html[lang=ar] .sum b { font-weight: 700; }
 html[lang=ar] .btn, html[lang=ar] .eyebrow, html[lang=ar] .chipb, html[lang=ar] .pick .pl, html[lang=ar] .tier b, html[lang=ar] .dl, html[lang=ar] th { font-weight: 700; }
 html[lang=ar] .sub, html[lang=ar] .lead, html[lang=ar] .desc { font-weight: 500; font-size: clamp(17px, 1.6vw, 20px); }

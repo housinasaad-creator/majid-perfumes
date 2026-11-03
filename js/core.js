@@ -14,10 +14,11 @@
     const s = store.get('mj-lang'); if (LANGS.includes(s)) return s;
     const n = (navigator.language || 'en').slice(0, 2).toLowerCase(); return LANGS.includes(n) ? n : 'en';
   })();
-  const dig = (s) => lang === 'ar' ? String(s).replace(/[0-9]/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]) : String(s);
+  const dig = (s) => String(s);                      // Western digits in every language (same as the phone number)
   const get = (L, path) => path.split('.').reduce((o, k) => (o == null ? o : o[k]), I[L]);
-  const t = (path) => { const v = get(lang, path); return v === undefined ? get('en', path) : v; };
-  const fmt = (n) => '₺' + Math.round(n).toLocaleString(lang === 'tr' ? 'tr-TR' : lang === 'ar' ? 'ar-EG' : 'en-US');
+  const west = (v) => (typeof v === 'string' ? v.replace(/[\u0660-\u0669]/g, (d) => d.charCodeAt(0) - 1632) : Array.isArray(v) ? v.map(west) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, west(x)])) : v);
+  const t = (path) => { const v = get(lang, path); return west(v === undefined ? get('en', path) : v); };
+  const fmt = (n) => '₺' + Math.round(n).toLocaleString(lang === 'tr' ? 'tr-TR' : 'en-US');
   const prod = (id) => D.products.find((p) => p.id === id);
   const pname = (p) => p.name[lang] || p.name.en;
   const note = (id) => D.notes[id][lang === 'ar' ? 2 : lang === 'tr' ? 3 : 1];
