@@ -367,3 +367,8 @@ label { display: grid; gap: 7px; font-size: 13px; color: var(--muted); } .err { 
 
 body:not([data-page=home]) .hdr { background: rgba(6, 26, 21, .95); border-color: var(--hair); }
 .vals + .wrap, .ws-b + .wrap { margin-top: clamp(50px, 7vw, 90px); }
+
+/* phone numbers and prices never mirror inside Arabic text */
+[dir=ltr], .num, bdi { unicode-bidi: isolate; }
+.num, .ct b[dir=ltr], address [dir=ltr] { direction: ltr; text-align: left; }
+.m-foot .num { opacity: .8; }

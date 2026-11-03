@@ -170,7 +170,7 @@ window.MJPage = (M) => {
         f = { shop: form.shop.value.trim(), person: form.person.value.trim(), city: form.city.value.trim(), phone: form.phone.value.trim(), type: +form.type.value, qty: +form.qty.value, note: form.note.value.trim() };
         if (!f.shop || !f.person || !f.city || !f.phone) { $('#wsErr').textContent = t('ws.req'); return; }
         $('#wsErr').textContent = '';
-        const m = t('ws.msg'), L = [m.hello, '', `${m.shop}: ${f.shop}`, `${m.person}: ${f.person}`, `${m.city}: ${f.city}`, `${m.phone}: ${f.phone}`, `${m.type}: ${t('ws.types')[f.type]}`, `${m.qty}: ${t('ws.qtys')[f.qty]}`];
+        const m = t('ws.msg'), L = [m.hello, '', `${m.shop}: ${f.shop}`, `${m.person}: ${f.person}`, `${m.city}: ${f.city}`, `${m.phone}: ${M.ltr(f.phone)}`, `${m.type}: ${t('ws.types')[f.type]}`, `${m.qty}: ${t('ws.qtys')[f.qty]}`];
         if (f.note) L.push(`${m.note}: ${f.note}`); L.push('', m.thanks);
         window.open(M.waUrl(L.join('\n')), '_blank', 'noopener');
       });
@@ -185,7 +185,7 @@ window.MJPage = (M) => {
       $('#contactBody').innerHTML = `
         <div class="wrap narrow"><header class="sec-h rv"><p class="eyebrow">${t('contact.eyebrow')}</p><h1>${t('contact.title')}</h1><p class="sub">${t('contact.sub')}</p></header></div>
         <div class="wrap ct-grid">
-          ${card(ICON.wa, t('contact.wa'), C.wa ? '+' + C.wa : t('cta.whatsapp'), wa, true)}
+          ${card(ICON.wa, t('contact.wa'), C.waDisplay || t('cta.whatsapp'), wa, true)}
           ${card(ICON.ig, t('contact.ig'), '@' + C.instagram, 'https://instagram.com/' + C.instagram, true)}
           ${card(ICON.arrow, t('contact.mail'), C.email, 'mailto:' + C.email, true)}
           ${card(ICON.arrow, t('contact.tel'), C.phone, '', true)}

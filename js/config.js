@@ -3,10 +3,11 @@
               WhatsApp's contact picker with the message already written.
    Everything marked "placeholder" (address, phone, e-mail, prices) is sample data to be replaced with the real details. */
 window.MAJID = {
-  wa: '',
+  wa: '905397139170',                               // WhatsApp, international format without + (00905397139170)
+  waDisplay: '+90 539 713 91 70',
   instagram: 'majid_perfumes',
   email: 'hello@majid-perfumes.example',            // placeholder
-  phone: '+90 5xx xxx xx xx',                       // placeholder
+  phone: '+90 539 713 91 70',
   address: 'Örnek Mah. Parfüm Sk. No: 8, Şahinbey / Gaziantep, Türkiye',   // placeholder
   giftBag: 150,                                     // placeholder price (TRY) of the gold-rope gift bag
   freeShippingOver: 5000,                           // placeholder

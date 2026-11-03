@@ -56,10 +56,11 @@
     saveBag(); syncBag(true);
   }
   function waUrl(text) { return `https://wa.me/${C.wa || ''}?text=${encodeURIComponent(text)}`; }
+  const ltr = (s) => (lang === 'ar' ? '\u2066' + s + '\u2069' : s);
   function orderText(f) {
     const m = t('cart.msg'), L = [m.hello, ''];
-    bag.forEach((i) => { const p = prod(i.id); L.push(`${dig(i.qty)}× ${pname(p)} — ${typeLabel(p)} ${t('p.ml')} — ${fmt(unit(i) * i.qty)}`); if (i.gift) L.push(`   ${m.gift}: ${m.yes} (+${fmt(C.giftBag * i.qty)})`); });
-    L.push('', `${m.total}: ${fmt(total())}`, m.ship, '', `${m.name}: ${f.name}`, `${m.city}: ${f.city}`);
+    bag.forEach((i) => { const p = prod(i.id); L.push(`${ltr(dig(i.qty) + '×')} ${pname(p)} — ${typeLabel(p)} ${ltr(t('p.ml'))} — ${ltr(fmt(unit(i) * i.qty))}`); if (i.gift) L.push(`   ${m.gift}: ${m.yes} (${ltr('+' + fmt(C.giftBag * i.qty))})`); });
+    L.push('', `${m.total}: ${ltr(fmt(total()))}`, m.ship, '', `${m.name}: ${f.name}`, `${m.city}: ${f.city}`);
     if (f.address) L.push(`${m.address}: ${f.address}`); if (f.note) L.push(`${m.note}: ${f.note}`);
     L.push('', m.thanks); return L.join('\n');
   }
@@ -82,7 +83,7 @@
         <a class="m-shop" href="shop.html"><span data-i18n="nav.shop"></span><small>${ICON.arrow}</small></a>
         <nav class="m-nav">${nav.slice(1).map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</nav>
         <div class="m-langs" role="group">${LANGS.map((l) => `<button data-lang="${l}">${l === 'ar' ? 'العربية' : l === 'tr' ? 'Türkçe' : 'English'}</button>`).join('')}</div>
-        <div class="m-foot"><a href="https://wa.me/${C.wa || ''}" target="_blank" rel="noopener">${ICON.wa}<span>WhatsApp</span></a><a href="https://instagram.com/${C.instagram}" target="_blank" rel="noopener">${ICON.ig}<span>@${C.instagram}</span></a></div>
+        <div class="m-foot"><a href="https://wa.me/${C.wa || ''}" target="_blank" rel="noopener">${ICON.wa}<span>WhatsApp</span><span class="num" dir="ltr">${C.waDisplay || ''}</span></a><a href="https://instagram.com/${C.instagram}" target="_blank" rel="noopener">${ICON.ig}<span>@${C.instagram}</span></a></div>
       </div>`;
     $('#ftr').innerHTML = `
       <div class="wrap ftr-grid">
@@ -211,7 +212,7 @@
   }
 
   // ---------------------------------------------------------------- public API
-  window.MJ = { C, D, t, get lang() { return lang; }, dig, fmt, prod, pname, note, img, picture, esc, ICON, typeLabel, addToBag, waUrl, onLang, applyI18n, setLang, $, $$, store, safe, LANGS };
+  window.MJ = { ltr, C, D, t, get lang() { return lang; }, dig, fmt, prod, pname, note, img, picture, esc, ICON, typeLabel, addToBag, waUrl, onLang, applyI18n, setLang, $, $$, store, safe, LANGS };
 
   function boot() {
     chrome(); bind(); setLang(lang, true); motion();
